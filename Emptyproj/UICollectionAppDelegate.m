@@ -14,10 +14,35 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    self.window.rootViewController=[UIViewController new];
+    UIView* mainview=self.window.rootViewController.view;
+    UIView* v=[[UIView alloc]initWithFrame:CGRectMake(110,111,132,194)];
+    UIView* v2=[[UIView alloc]initWithFrame:CGRectMake(0,0,132,10)];
+    UIView* v3=[[UIView alloc]initWithFrame:CGRectMake(v2.bounds.size.width-20,v2.bounds.size.height-20,20,20)];
+    //[mainview addSubview:v];
+    v2.autoresizingMask =UIViewAutoresizingFlexibleWidth;
+    v2.autoresizingMask =UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin;
+    
+    mainview.backgroundColor=[UIColor blueColor];
+    v.backgroundColor=[UIColor colorWithRed:1 green:.4 blue:.1 alpha:1];
+    v2.backgroundColor=[UIColor colorWithRed:.5 green:1 blue:0 alpha:1];
+    v3.backgroundColor=[UIColor colorWithRed:1 green:0 blue:0 alpha:1];
+    
+    [mainview addSubview:v];
+    [v addSubview:v2];
+    [v2 addSubview:v3];
+    //v2.transform=CGAffineTransformMakeTranslation(45*M_PI/180);
+    
+    CGRect r=v.bounds;
+    r.size.width+=40;
+    r.size.height-=50;
+    v.bounds=r;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
